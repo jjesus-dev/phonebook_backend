@@ -1,0 +1,24 @@
+{
+  "name": "phonebook_backend",
+  "version": "0.0.1",
+  "description": "Express app that returns a list of phonebook entries.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "phonebook"
+  ],
+  "author": "Javier J. Martínez M.",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
