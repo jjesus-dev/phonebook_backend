@@ -12,3 +12,11 @@ It is and implementation of a Node application that returns a hardcoded list of 
 Due to the nature of the exercises and the need for a deployment using [Render](https://render.com), this dedicated repo was created.
 
 The code for the other parts of the course is in the [main repository](https://github.com/jjesus-dev/fullstackopen).
+
+## Deployed app
+
+The deployed Phonebook backend is [here](https://phonebook-backend-kapv.onrender.com/).
+
+API endpoint:
+
++ [api/persons](https://phonebook-backend-kapv.onrender.com/api/persons)
