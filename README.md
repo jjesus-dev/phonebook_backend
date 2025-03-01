@@ -1,4 +1,4 @@
-# Phonebook Backend (Express)
+# Phonebook App (Express)
 
 ## About this repository
 
@@ -15,8 +15,8 @@ The code for the other parts of the course is in the [main repository](https://g
 
 ## Deployed app
 
-The deployed Phonebook backend is [here](https://phonebook-backend-kapv.onrender.com/).
+The deployed Phonebook app (*frontend*) is [here](https://phonebook-backend-kapv.onrender.com/).
 
-API endpoint:
+API endpoint (*backend*):
 
 + [api/persons](https://phonebook-backend-kapv.onrender.com/api/persons)
