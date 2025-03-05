@@ -5,28 +5,7 @@ const cors = require('cors');
 const app = express();
 const Person = require('./models/person');
 
-let numbers = [
-    { 
-      "id": 1,
-      "name": "Arto Hellas", 
-      "number": "040-123456"
-    },
-    { 
-      "id": 2,
-      "name": "Ada Lovelace", 
-      "number": "39-44-5323523"
-    },
-    { 
-      "id": 3,
-      "name": "Dan Abramov", 
-      "number": "12-43-234345"
-    },
-    { 
-      "id": 4,
-      "name": "Mary Poppendieck", 
-      "number": "39-23-6423122"
-    }
-];
+let numbers = [];
 
 app.use(express.json());
 app.use(cors());
@@ -61,14 +40,9 @@ app.get('/api/persons', (request, response) => {
 })
 
 app.get('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id);
-    const number = numbers.find(n => n.id === id);
-
-    if (!number) {
-        return response.status(404).end();
-    }
-
-    response.json(number);
+    Person.findById(request.params.id).then(number => {
+        response.json(number);
+    })
 })
 
 app.delete('/api/persons/:id', (request, response) => {
@@ -78,42 +52,27 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end();
 })
 
-const getRandomId = () => {
-    const newId = Math.floor(Math.random() * 500);
-
-    return newId;
-}
-
 app.post('/api/persons', (request, response) => {
     const body = request.body;
 
-    if (!body.name) {
+    if (!body.name || body.name === undefined) {
         return response.status(400)
             .json({ error: "Name is missing"});
     }
 
-    if (!body.number) {
+    if (!body.number || body.number === undefined) {
         return response.status(400)
             .json({ error: "Number is missing"});
     }
 
-    const existingName = numbers.find(n => 
-        n.name.toLowerCase() === body.name.toLowerCase());
-
-    if (existingName) {
-        return response.status(409)
-            .json({ error: "Name must be unique"});
-    }
-
-    const number = {
+    const number = new Person({
         name: body.name,
-        number: body.number,
-        id: getRandomId()
-    }
+        number: body.number
+    })
     
-    numbers = numbers.concat(number);
-
-    response.json(number);
+    number.save().then(savedNumber => {
+        response.json(savedNumber);
+    })
 })
 
 const PORT = process.env.PORT || 3001;
