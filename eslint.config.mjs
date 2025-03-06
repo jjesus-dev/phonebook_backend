@@ -21,6 +21,6 @@ export default [
     },
   },// ignore a dir globally
   {ignores: ["dist/"]},
-  js.configs.recommended, {},
+  js.configs.recommended, {rules: { "no-unused-vars": "warn" }},
   {languageOptions: { globals: {...globals.browser, ...globals.node} }},
 ];
