@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // Info is loaded from `.env` file
 const url = process.env.MONGODB_URI;
 
-console.log('Trying to connect to', url);
+//console.log('Trying to connect to', url);
 
 mongoose.set('strictQuery', false);
 mongoose.connect(url)
@@ -17,12 +17,18 @@ const personSchema = new mongoose.Schema({
     name: {
         type: String,
         minLength: 3,
-        required: true
+        required: [true, 'Name is required']
     },
     number: {
         type: String,
-        minLength: 6,
-        required: true
+        minLength: 8,
+        validate: {
+            validator: function(v) {
+                return /^(?!-)(\d{2,3}-\d+)(?<!-)$/gm.test(v)
+            },
+            message: props => `${props.value} is not a valid phone number!`
+        },
+        required: [true, 'Phone number is required']
     }
 })
 
