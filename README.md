@@ -2,10 +2,9 @@
 
 ## About this repository
 
-This repository contains the code for the part #3 [Node.js and Express](https://fullstackopen.com/en/part3/) of the Full
-Full Stack Open (University of Helsinki) course.
+This repository contains the code for the part #3 [Node.js and Express](https://fullstackopen.com/en/part3/) of the Full Stack Open (University of Helsinki) course.
 
-It is and implementation of a Node application that returns a hardcoded list of phonebook entries.
+It is an implementation of a Node application that returns a hardcoded list of phonebook entries.
 
 ### Why another repository?
 
